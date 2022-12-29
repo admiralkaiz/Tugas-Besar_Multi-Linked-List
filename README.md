@@ -14,7 +14,7 @@ Membuat implementasi dari _multi-linked list_ dengan ketentuan sebagai berikut:
 - Deskripsi: Aplikasi yang dibuat mampu merelasikan data sutradara ke film. Seorang sutradara bisa membuat satu atau lebih film, tetapi, asumsi, satu film hanya bisa dibuat oleh seorang sutradara saja.
 
 ## Abstract Data Type
-`
+
 type infoSutradara   : string
 type infoFilm    : string
 
@@ -32,10 +32,10 @@ type elmFilm : <
  
 type listSutradara <
     first   : adr_Sutradara >
- `
+ 
 
 ## Algoritma, Fungsionalitas Dasar, dan Implementasinya
-`
+
 function createParentList()-> listSutradara
 
 
@@ -70,4 +70,4 @@ procedure printCount(L : listSutradara)
 procedure mostFilm(L : listSutradara)
 
 procedure leastFilm(L : listSutradara)
-`
+
