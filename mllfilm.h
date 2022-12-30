@@ -57,4 +57,9 @@ void printCount(listSutradara L);
 void mostFilms(listSutradara L);
 void leastFilms(listSutradara L);
 
+// Menu and User Interface
+void showTitle();
+void showMenu();
+char selectMenu();
+
 #endif 
