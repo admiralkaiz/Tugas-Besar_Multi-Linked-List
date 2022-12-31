@@ -79,7 +79,16 @@ infotype sama dengan parameter string sutradara.
 Jika tidak ditemukan atau list kosong, fungsi mengembalikan nilai NIL.
 */
 {
-    ;
+    if(!isEmptyList(L)){
+        adrFilm p = first(L);
+        while(p!=nil){
+            if (info(p)==sutradara){
+                return p;
+            }   
+            p = nextSutradara(p);
+        }
+    }
+    return nil;
 }
 
 void showListSutradara(listSutradara L)
@@ -115,10 +124,20 @@ atau menjadi elemen pertama list child dari jika list child dari elemen parent
 tersebut kosong
 */
 {
-    ;
+    adrSutradara pSutradara = findSutradara(L, sutradara);
+    if (pSutradara!=nil)
+    {
+        if (isNoChild(pSutradara)) child(pSutradara) = p;
+        else
+        {
+            adrFilm q  = child(pSutradara);
+            while (nextFilm(q)!=nil) q = nextFilm(q);
+            nextFilm(q) = p;
+        }
+    }
 }
 
-void deleteFilm(listSutradara &L, string sutradara, string film)
+void deleteFilm(listSutradara &L, string sutradara, string film, adrFilm p)
 /*
 I.S. terdefinisi sebuah listSutradara L (mungkin kosong), string sutradara, dan
 string film
@@ -128,17 +147,45 @@ elemen parent tersebut memiliki infotype yang sama dengan string film,
 elemen child tersebut akan dihapus dari list child 
 */
 {
-    ;
+    if (!isEmptyList(L))
+    {
+        adrSutradara pSutradara = findSutradara(L, sutradara);
+        if (pSutradara!=nil)
+        {
+            if (info(child(pSutradara))==film) deleteFirstFilm(L,pSutradara,p);
+            else
+            {
+                adrFilm q = child(pSutradara);
+                while (q!=nil)
+                {
+                    if (info(nextFilm(q))==film) deleteAfterFilm(L,pSutradara,q,p);
+                    q = nextFilm(q);
+                }
+            }
+        }
+    }
 }
 
-void deleteSutradara(listSutradara &L, string sutradara)
+void deleteSutradara(listSutradara &L, string sutradara, adrSutradara p);
 /*
 I.S. terdefinisi sebuah listSutradara L (mungkin kosong) dan string sutradara
 F.S. jika terdapat elemen sutradara dengan infotype sama seperti string sutradara,
 elemen tersebut akan dihapus dari listSutradara L.
 */
 {
-    ;
+    if (!isEmptyList(L))
+    {
+        if (info(first(L))==sutradara) deleteFirstSutradara(L,p);
+        else
+        {
+            adrSutradara q = first(L);
+            while (q!=nil)
+            {
+                if (info(nextSutradara(q))==sutradara) deleteAfterSutradara(L,q,p);
+                q = nextSutradara(q);
+            }
+        }
+    }
 }
 
 void showAllData(listSutradara L)
@@ -149,5 +196,21 @@ dari L beserta elemen child dari masing-masing elemen parent atau "List kosong"
 jika L kosong
 */
 {
-    ;
+    if(!isEmpty(L)){
+        adrSutradara pS = first(L);
+        while(pS!=nil)
+        {
+            cout << "Sutradara: "<< info(pS) << endl << "Film: " << endl;
+            adrFilm pF = child(pS);
+            while (pF!=nil)
+            {
+                cout << info(pF) << endl;
+                pF = nextFilm(pF);
+            }
+            cout<<endl;
+            pS = nextSutradara(pS);
+        }
+    }else{
+        cout<<"List Kosong"<<endl;
+    }
 }
