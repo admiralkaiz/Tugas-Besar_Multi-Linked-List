@@ -61,7 +61,15 @@ dan pointer ke elemen parent (sutradara) p
 F.S. p sudah dimasukkan ke akhir listSutradara
 */
 {
-    ;
+    if (isEmpty(L))
+    {
+        first(L) = p;
+    }
+    else
+    {
+        next(p) = first(L)
+        first(L) = p;    
+    }
 }
 
 adrSutradara findSutradara(listSutradara L, string sutradara)
@@ -81,7 +89,19 @@ F.S. tercetak ke layar konsol infotype dari seluruh elemen
 yang terdapat dalam list atau "List kosong" apabila listSutradara L kosong
 */
 {
-    ;
+    if (!isEmpty(L)){
+        adrSutradara p = first(L);
+        while (p!=nil)
+        {
+            cout << infoSutradara(p) << " ";
+            p = next(p);
+        }
+        cout << endl;
+    }
+    else
+    {
+        cout<<"List kosong"<<endl;
+    }
 }
 
 // Primitif dasar untuk MLL
