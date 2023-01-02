@@ -5,7 +5,7 @@ Nama Kelompok: Mogekov Hashasky II
 
 Anggota Kelompok:
 - Kaisar Kertarajasa (1301213276)
-- Satya Rayyis Baruna ()
+- Satya Rayyis Baruna (1301213316)
 
 ## Rincian Tugas
 Membuat implementasi dari _multi-linked list_ dengan ketentuan sebagai berikut:
