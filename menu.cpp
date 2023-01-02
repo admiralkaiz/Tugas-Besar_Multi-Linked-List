@@ -1,20 +1,28 @@
 #include "headers/menu.h"
 
 void showTitle()
+/*
+I.S -
+F.S tercetak sebuah judul program dan nama pembuatnya
+*/
 {
-    cout << "===================================" << endl;
-    cout << "*  _____ ___ _     __  __  ____   *" << endl;
-    cout << "* |  ___|_ _| |   |  \\/  / ___|   *" << endl;
-    cout << "* | |_   | || |   | |\\/| \\___ \\   *" << endl;
-    cout << "* |  _|  | || |___| |  | |___) |  *" << endl;
-    cout << "* |_|   |___|_____|_|  |_|____/   *" << endl;
-    cout << "*                                 *" << endl;
-    cout << "*      By: Kaisar and Satya       *" << endl;
-    cout << "===================================" << endl;
+    cout << "=============================================" << endl;
+    cout << "*       _____ ___ _     __  __  ____        *" << endl;
+    cout << "*      |  ___|_ _| |   |  \\/  / ___|        *" << endl;
+    cout << "*      | |_   | || |   | |\\/| \\___ \\        *" << endl;
+    cout << "*      |  _|  | || |___| |  | |___) |       *" << endl;
+    cout << "*      |_|   |___|_____|_|  |_|____/        *" << endl;
+    cout << "*                                           *" << endl;
+    cout << "*           By: Kaisar and Satya            *" << endl;
+    cout << "=============================================" << endl;
     cout << endl;
 }
 
 void showMenu()
+/*
+I.S -
+F.S tercetak daftar menu seleksi operasi yang ingin dijalankan user
+*/
 {
     cout << "[MENU SELECTION]" << endl;
     cout << "[1] Tambahkan data sutradara" << endl;
@@ -30,13 +38,19 @@ void showMenu()
     cout << endl;
 }
 
-char selectMenu()
+int selectMenu()
+/*
+Mengembalikan sebuah integer yang menyatakan pilihan operasi yang 
+akan dijalankan user. Input akan terus diulang hingga valid apabila
+user memasukkan integer yang tidak valid.
+*/
 {
-    char command = 'x';
-    while (command > '0' || command < '9')
+    int command = -1;
+    while (command < 0 || command > 9)
     {
-        cout << "Masukkan command (9 untuk tampilkan list command) > ";
+        cout << "> Masukkan command (9 untuk tampilkan list command) % ";
         cin >> command;
+        if (command < 0 || command > 9) cout << "Invalid input!" << endl;
     }
     return command;
 }
